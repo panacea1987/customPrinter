@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="application.properties"/>
+    </bean>
+
+    <bean id="commandReader" class="base.tools.InputCommandReaderImpl">
+    </bean>
+
+    <bean id="task" class="base.tools.PrintTask">
+    </bean>
+
+<<<<<<< HEAD
+    <bean id="extController" class="base.controller.Controller">
+        <constructor-arg index="0" ref="commandReader"/>
+        <constructor-arg index="1" ref="extService"/>
+        <constructor-arg index="2" value="${txtDescr}"/>
+        <constructor-arg index="3" type="int" value="${txtDuration}"/>
+        <constructor-arg index="4" type="int" value="${txtSize}"/>
+        <constructor-arg index="5" value="${pdfDescr}"/>
+        <constructor-arg index="6" type="int" value="${pdfDuration}"/>
+        <constructor-arg index="7" type="int" value="${pdfSize}"/>
+        <constructor-arg index="8" value="${xlsDescr}"/>
+        <constructor-arg index="9" type="int" value="${xlsDuration}"/>
+        <constructor-arg index="10" type="int" value="${xlsSize}"/>
+=======
+    <bean id="extController" class="base.controller.PrintController">
+        <constructor-arg index="0" ref="commandReader"/>
+        <constructor-arg index="1" ref="extService"/>
+        <constructor-arg index="2" value="${TXT.File.Description}"/>
+        <constructor-arg index="3" type="int" value="${TXT.Print.Duration}"/>
+        <constructor-arg index="4" type="int" value="${TXT.File.Size}"/>
+        <constructor-arg index="5" value="${PDF.File.Description}"/>
+        <constructor-arg index="6" type="int" value="${PDF.Print.Duration}"/>
+        <constructor-arg index="7" type="int" value="${PDF.File.Size}"/>
+        <constructor-arg index="8" value="${XLS.File.Description}"/>
+        <constructor-arg index="9" type="int" value="${XLS.Print.Duration}"/>
+        <constructor-arg index="10" type="int" value="${XLS.File.Size}"/>
+>>>>>>> 3 commit
+    </bean>
+
+    <bean id="extCommand" class="base.management.ExternalCommandImpl" init-method="init">
+    </bean>
+    <bean id="extService" class="base.service.ExternalCommandServiceImpl">
+        <property name="command" ref="extCommand"/>
+    </bean>
+
+</beans>
